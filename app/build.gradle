@@ -1,0 +1,62 @@
+plugins {
+    id 'com.android.application'
+}
+def keyStoreDefined = project.hasProperty('signingStoreLocation') &&
+        project.hasProperty('signingStorePassword') &&
+        project.hasProperty('signingKeyAlias') &&
+        project.hasProperty('signingKeyPassword')
+
+android {
+    compileSdk 30
+
+    defaultConfig {
+        applicationId "org.adaway.automation"
+        minSdk 26
+        targetSdk 30
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    /*
+     * To sign release build, create file gradle.properties in ~/.gradle/ with this content:
+     *
+     * signingStoreLocation=/home/key.store
+     * signingStorePassword=xxx
+     * signingKeyAlias=alias
+     * signingKeyPassword=xxx
+     */
+    if (keyStoreDefined) {
+        println "Found signature properties in gradle.properties. Build will be signed."
+
+        signingConfigs {
+            release {
+                storeFile file(signingStoreLocation)
+                storePassword signingStorePassword
+                keyAlias signingKeyAlias
+                keyPassword signingKeyPassword
+            }
+        }
+
+        buildTypes.debug.signingConfig = signingConfigs.release
+        buildTypes.release.signingConfig = signingConfigs.release
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    implementation 'androidx.appcompat:appcompat:1.3.1'
+    implementation 'com.google.android.material:material:1.4.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.0'
+}

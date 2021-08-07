@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">AdAdaway Automation</string>
+    <string name="enable_adblock">Enable adblock</string>
+    <string name="disable_adblock">Disable adblock</string>
+    <string name="test_me_header">Test me first!</string>
+    <string name="setup_tasker_header">Then setup Tasker</string>
+    <string name="tasker_instructions">1. Create a new <cite>Send intent</cite> action,\n
+    2. Set <cite>Action</cite> to <cite>org.adaway.action.SEND_COMMAND_INSECURE</cite>,\n
+    3. Set <cite>Extra</cite> to the command you want:\n
+        &#160;&#160;a. <cite>COMMAND:START</cite> to enable ad-blocking,\n
+        &#160;&#160;b. <cite>COMMAND:STOP</cite> to disable ad-blocking,\n
+    4. Set <cite>Package</cite> to <cite>org.adaway.automation</cite>,\n
+    5. Done, enjoy!</string>
+</resources>
