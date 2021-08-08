@@ -5,6 +5,10 @@ This application has two purposes:
 1. Demonstrate how to integration [AdAway](https://github.com/AdAway/AdAway/) with automation tools like Tasker,
 2. Allow this kind of tools to work without requesting AdAway custom application permission.
 
+[<img src="resources/screenshot.png"
+alt="Screenshot"
+height="256">](resources/screenshot.png)
+
 ## Goal
 
 This application demonstrates how to integrate with AdAway using broadcasted intents.
